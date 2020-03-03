@@ -9,6 +9,11 @@ const HOST = 'localhost';
 
 const query = require('./queryServer.js');
 
+//Fix the CORS Error — and How the Access-Control-Allow-Origin Header Works
+app.use((req, res, next) => {
+   res.header('Access-Control-Allow-Origin', '*');
+   next();
+ });
 
 //Attach the middleware
 //app.use( bodyParser.json() );
