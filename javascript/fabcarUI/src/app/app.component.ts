@@ -8,12 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'fabcarUI';
+  public results:any = [];
   constructor(private http:HttpClient)
   {
-      
+    
   }
   ngOnInit(){
-    let obs = this.http.get('http://localhost:8080/api/query/');
-    obs.subscribe(()=> console.log('got the response'));
+    let obs = this.http.get('http://'+location.hostname+':8080/api/query/');
+    obs.subscribe((response)=> {
+      this.results = response;
+      console.log(this.results);
+    });
   }
 }
