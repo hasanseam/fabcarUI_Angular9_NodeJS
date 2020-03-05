@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'fabcarUI';
+  title = 'fabcar UI';
   public results:any = [];
   constructor(private http:HttpClient)
   {
