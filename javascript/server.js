@@ -6,8 +6,9 @@ var bodyParser = require('body-parser');
 var os = require("os");
 var hostname = os.hostname();
 
-const PORT = 8080;
 const HOST = hostname; //'localhost';
+const PORT = 8080;
+
 
 
 const query = require('./queryServer.js');
