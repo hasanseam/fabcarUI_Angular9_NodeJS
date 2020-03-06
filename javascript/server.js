@@ -3,8 +3,11 @@ const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
 // Constants
+var os = require("os");
+var hostname = os.hostname();
+
 const PORT = 8080;
-const HOST = 'localhost';
+const HOST = hostname; //'localhost';
 
 
 const query = require('./queryServer.js');
