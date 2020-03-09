@@ -13,6 +13,7 @@ const PORT = 8080;
 app.use(express.json()); //for parsing json request
 
 const query = require('./queryServer.js');
+const invoke = require('./invokeServer.js');
 
 //Fix the CORS Error — and How the Access-Control-Allow-Origin Header Works
 app.use((req, res, next) => {
@@ -22,7 +23,6 @@ app.use((req, res, next) => {
 
 app.post('/api/invoke',(req,res)=>{
    const schema = Joi.object({
-      name:Joi.string().min(3),
       make:Joi.string(),
       model:Joi.string(),
       colour:Joi.string(),
@@ -39,12 +39,10 @@ app.post('/api/invoke',(req,res)=>{
         "colour":req.body.colour,
         "owner":req.body.owner
      }
-     console.log(carObj.make);
-     res.send(req.body.make);
+    invoke.invokeFunc('CAR12',req.body.make,req.body.model,req.body.colour,req.body.owner);
+    res.send(carObj.make);
 }) 
 
-//Attach the middleware
-//app.use( bodyParser.json() );
 app.get('/api/query', function (req, res) {
      const b = query.queryFunc();
      let carData = [];
