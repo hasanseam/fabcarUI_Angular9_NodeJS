@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { TestviewComponent } from './testview/testview.component';
+import { QueryComponent } from './query/query.component';
+import { InvokeComponent } from './invoke/invoke.component';
+
 
 
 const routes: Routes = [
-  {path:'query', component : TestviewComponent}
+  { path: '',   redirectTo: '/query', pathMatch: 'full' },
+  {path: 'query', component: QueryComponent},
+  {path: 'invoke', component: InvokeComponent},
 ];
 
 @NgModule({
@@ -13,5 +17,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [TestviewComponent];
+
+export const routingComponents = [];
 

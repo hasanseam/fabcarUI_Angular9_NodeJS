@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "fabcarUI": {
@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "fabcarUI"
+    }
+  },
+  "defaultProject": "fabcarUI",
+  "cli": {
+    "analytics": "66d3d605-0405-4c40-a8a1-3b0aac15f63e"
+  }
 }
