@@ -8,7 +8,7 @@ const { Gateway, Wallets } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
 
-async function main() {
+async function main(name) {
     try {
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', 'first-network', 'connection-org1.json');
@@ -36,11 +36,11 @@ async function main() {
 
         // Get the contract from the network.
         const contract = network.getContract('fabcar');
-
+        
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
-        await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+        await contract.submitTransaction('createCar', 'CAR14',name, 'Accord', 'Black', 'Tom');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
@@ -52,4 +52,4 @@ async function main() {
     }
 }
 
-main();
+main('BMW');
