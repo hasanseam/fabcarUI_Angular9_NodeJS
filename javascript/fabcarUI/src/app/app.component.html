@@ -1,21 +1,6 @@
 <app-header></app-header>
-<div>Query Result</div>
-<br>
-<table>
-   <tr>
-     <th>Name</th>
-     <th>Make</th>
-     <th>Model</th>
-     <th>Colour</th>
-     <th>Owner</th>
-   </tr>
-   <tr *ngFor="let result of results">
-     <td>{{result.Key}}</td>
-     <td>{{result.Record.make}}</td>
-     <td>{{result.Record.model}}</td>
-     <td>{{result.Record.colour}}</td>
-     <td>{{result.Record.owner}}</td>
-   </tr>
-   
- </table>
- <router-outlet></router-outlet>
+<div class="row">
+  <div class="col-xl-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
