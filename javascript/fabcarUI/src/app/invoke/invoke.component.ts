@@ -12,4 +12,7 @@ export class InvokeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  invokeFormSubmit(){
+      console.log("Hasan Seam");
+  }
 }
