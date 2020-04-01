@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { QueryService } from '../query.service';
+
 
 @Component({
   selector: 'app-query',
@@ -8,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class QueryComponent implements OnInit {
   public results:any = [];
-  constructor(private http:HttpClient) { }
+  constructor(private _queryService:QueryService) { }
 
   ngOnInit(): void {
-    let obs = this.http.get('http://'+location.hostname+':8080/api/query/');
+    let obs = this._queryService.query()
     obs.subscribe((response)=> {
       this.results = response;
       console.log(this.results);

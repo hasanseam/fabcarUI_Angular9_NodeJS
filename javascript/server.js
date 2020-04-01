@@ -14,10 +14,11 @@ app.use(express.json()); //for parsing json request
 
 const query = require('./queryServer.js');
 const invoke = require('./invokeServer.js');
-
 //Fix the CORS Error — and How the Access-Control-Allow-Origin Header Works
 app.use((req, res, next) => {
    res.header('Access-Control-Allow-Origin', '*');
+   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
    next();
  });
 
@@ -39,7 +40,16 @@ app.post('/api/invoke',(req,res)=>{
         "colour":req.body.colour,
         "owner":req.body.owner
      }
-    invoke.invokeFunc('CAR12',req.body.make,req.body.model,req.body.colour,req.body.owner);
+     const b = query.queryFunc();
+     let carData = [];
+     b.then(x=>{
+        var obj = JSON.parse(x);
+        carno = 'CAR'+obj.length
+        console.log(carno)
+        invoke.invokeFunc(carno,req.body.make,req.body.model,req.body.colour,req.body.owner);
+     });
+     
+    
     res.send(carObj.make);
 }) 
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from '../car';
+import { NgForm } from '@angular/forms';
+import { InvokeCarService } from '../invoke-car.service';
 
 @Component({
   selector: 'app-invoke',
@@ -7,12 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvokeComponent implements OnInit {
 
-  constructor() { }
+
+  car = new Car('','','','');
+  
+  constructor(private _invokeCarService:InvokeCarService ){
+
+  }
 
   ngOnInit(): void {
   }
-
-  invokeFormSubmit(){
-      console.log("Hasan Seam");
+  
+  invokeFormSubmit(fabCarForm : NgForm){
+      console.log(this.car);
+      let obs= this._invokeCarService.invoke(this.car);
+      obs.subscribe(
+        data => console.log('success',data),
+        error => console.log('Error',error)
+      )
+      fabCarForm.reset()
   }
 }

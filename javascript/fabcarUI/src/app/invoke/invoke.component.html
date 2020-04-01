@@ -1,30 +1,30 @@
 <div class="container">
     <hr>
-    <form>
+    <form #fabCarform = "ngForm"  (ngSubmit)="invokeFormSubmit(fabCarform)">
         <div class="form-group row">
           <label for="make" class="col-sm-2 col-form-label">Make</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="make">
+            <input type="text" class="form-control" id="make" name="make" [(ngModel)]="car.make" >
           </div>
         </div>
         <div class="form-group row">
           <label for="model" class="col-sm-2 col-form-label">Model</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="model" >
+            <input type="text" class="form-control" id="model" name="model" [(ngModel)]="car.model" >
           </div>
         </div>
         <div class="form-group row">
             <label for="colour" class="col-sm-2 col-form-label">Colour</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="colur" >
+              <input type="text" class="form-control" id="colur" name="colour" [(ngModel)]="car.colour" >
             </div>
           </div>
           <div class="form-group row">
             <label for="owner" class="col-sm-2 col-form-label">Owner</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="owner" >
+              <input type="text" class="form-control" id="owner" name="owner" [(ngModel)]="car.owner">
             </div>
           </div>
-        <button type="submit" class="btn btn-success" (click)="invokeFormSubmit()">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
       </form>
 </div>
